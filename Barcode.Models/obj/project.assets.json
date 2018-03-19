@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\BATUHAN\\Desktop\\berkan\\Barcode\\Barcode.Models\\Barcode.Models.csproj",
+      "projectUniqueName": "C:\\Users\\BATUHAN\\Desktop\\Repos\\Barcode\\Barcode.Models\\Barcode.Models.csproj",
       "projectName": "Barcode.Models",
-      "projectPath": "C:\\Users\\BATUHAN\\Desktop\\berkan\\Barcode\\Barcode.Models\\Barcode.Models.csproj",
+      "projectPath": "C:\\Users\\BATUHAN\\Desktop\\Repos\\Barcode\\Barcode.Models\\Barcode.Models.csproj",
       "packagesPath": "C:\\Users\\BATUHAN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BATUHAN\\Desktop\\berkan\\Barcode\\Barcode.Models\\obj\\",
+      "outputPath": "C:\\Users\\BATUHAN\\Desktop\\Repos\\Barcode\\Barcode.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

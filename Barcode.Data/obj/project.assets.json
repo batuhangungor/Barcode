@@ -3356,11 +3356,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\BATUHAN\\Desktop\\berkan\\Barcode\\Barcode.Data\\Barcode.Data.csproj",
+      "projectUniqueName": "C:\\Users\\BATUHAN\\Desktop\\Repos\\Barcode\\Barcode.Data\\Barcode.Data.csproj",
       "projectName": "Barcode.Data",
-      "projectPath": "C:\\Users\\BATUHAN\\Desktop\\berkan\\Barcode\\Barcode.Data\\Barcode.Data.csproj",
+      "projectPath": "C:\\Users\\BATUHAN\\Desktop\\Repos\\Barcode\\Barcode.Data\\Barcode.Data.csproj",
       "packagesPath": "C:\\Users\\BATUHAN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BATUHAN\\Desktop\\berkan\\Barcode\\Barcode.Data\\obj\\",
+      "outputPath": "C:\\Users\\BATUHAN\\Desktop\\Repos\\Barcode\\Barcode.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3379,8 +3379,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\BATUHAN\\Desktop\\berkan\\Barcode\\Barcode.Models\\Barcode.Models.csproj": {
-              "projectPath": "C:\\Users\\BATUHAN\\Desktop\\berkan\\Barcode\\Barcode.Models\\Barcode.Models.csproj"
+            "C:\\Users\\BATUHAN\\Desktop\\Repos\\Barcode\\Barcode.Models\\Barcode.Models.csproj": {
+              "projectPath": "C:\\Users\\BATUHAN\\Desktop\\Repos\\Barcode\\Barcode.Models\\Barcode.Models.csproj"
             }
           }
         }

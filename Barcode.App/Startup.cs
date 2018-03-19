@@ -10,6 +10,7 @@ using Barcode.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Barcode.Data.Repository;
 using Barcode.Models;
+using Barcode.Data.UnitOfWork;
 
 namespace Barcode.App
 {
@@ -22,7 +23,7 @@ namespace Barcode.App
             var connection = @"Server=DESKTOP-3I7VBMV\SQLEXPRESS; Database=Barcode;Trusted_Connection=True;";
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
 
-            services.AddTransient<IRepository<Product>, EFRepository<Product>>();
+            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,9 +33,10 @@ namespace Barcode.App
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStaticFiles();
 
             app.UseMvcWithDefaultRoute();
-            
+
         }
     }
 }

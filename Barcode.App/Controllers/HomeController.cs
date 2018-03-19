@@ -6,19 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Barcode.Data.Context;
 using Barcode.Data.Repository;
 using Barcode.Models;
+using Barcode.Data.UnitOfWork;
 
 namespace Barcode.App.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private IRepository<Product> db;
-        public HomeController(IRepository<Product> _db)
+        private IUnitOfWork db;
+        public HomeController(IUnitOfWork _db)
         {
             db = _db;
         }
         public IActionResult Index()
         {
-            var model = db.GetAll();
+            var model = db.GetRepository<Product>().GetAll();
             return View(model);
         }
     }

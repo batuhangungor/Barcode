@@ -7,3 +7,12 @@ C:\Users\BATUHAN\Desktop\berkan\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\B
 C:\Users\BATUHAN\Desktop\berkan\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\Barcode.Models.dll
 C:\Users\BATUHAN\Desktop\berkan\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\Barcode.Models.pdb
 C:\Users\BATUHAN\Desktop\berkan\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\Barcode.Models.csprojResolveAssemblyReference.cache
+C:\Users\BATUHAN\Desktop\Repos\Barcode\Barcode.Models\bin\Debug\netcoreapp2.0\Barcode.Models.deps.json
+C:\Users\BATUHAN\Desktop\Repos\Barcode\Barcode.Models\bin\Debug\netcoreapp2.0\Barcode.Models.dll
+C:\Users\BATUHAN\Desktop\Repos\Barcode\Barcode.Models\bin\Debug\netcoreapp2.0\Barcode.Models.pdb
+C:\Users\BATUHAN\Desktop\Repos\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\Barcode.Models.csprojResolveAssemblyReference.cache
+C:\Users\BATUHAN\Desktop\Repos\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\Barcode.Models.csproj.CoreCompileInputs.cache
+C:\Users\BATUHAN\Desktop\Repos\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\Barcode.Models.AssemblyInfoInputs.cache
+C:\Users\BATUHAN\Desktop\Repos\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\Barcode.Models.AssemblyInfo.cs
+C:\Users\BATUHAN\Desktop\Repos\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\Barcode.Models.dll
+C:\Users\BATUHAN\Desktop\Repos\Barcode\Barcode.Models\obj\Debug\netcoreapp2.0\Barcode.Models.pdb
