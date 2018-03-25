@@ -17,17 +17,18 @@ namespace Barcode.Data.Repository
         }
         public void Add(T entity)
         {
-            throw new NotImplementedException();
+            db.Set<T>().Add(entity);
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            db.Set<T>().Remove(entity);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var entity = db.Set<T>().Find(id);
+            Delete(entity);
         }
 
         public IQueryable<T> Get(Expression<Func<T, bool>> filter)
@@ -42,12 +43,12 @@ namespace Barcode.Data.Repository
 
         public void Save()
         {
-            throw new NotImplementedException();
+            db.SaveChanges();
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            db.Set<T>().Update(entity);
         }
     }
 }

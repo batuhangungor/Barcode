@@ -267,8 +267,20 @@
                         <li>
                             <a href="index.html"><i class="fa fa-shopping-cart fa-fw"></i>Satış Paneli</a>
                         </li>
+                        <li class="">
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Ürün Yönetimi<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+                                <li>
+                                    <a asp-controller="ProductManagement" asp-action="index"><i class="fa fa-sitemap fa-fw"></i>Ürünler</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="ProductManagement" asp-action="categories"><i class="fa fa-sitemap fa-fw"></i>Kategoriler</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-sitemap fa-fw"></i>Ürün Yönetimi</a>
+                            <a asp-controller="ProductManagement" asp-action="index"><i class="fa fa-sitemap fa-fw"></i>Ürün Yönetimi</a>
                         </li>
                         <li>
                             <a href="index.html"><i class="fa fa-edit fa-fw"></i>Muhasebe Kayıtları</a>
