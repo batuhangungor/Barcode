@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Brand>
+@{
+    ViewData["Title"] = "Brands";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Markalar
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive table-bordered">
+                    <table class="table" id="brandTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Marka Adı</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var brand in Model)
+                            {
+                                <tr>
+                                    <td>@brand.Id</td>
+                                    <td>@brand.Name</td>
+                                    <td>
+                                        <a asp-controller="productManagement" asp-action="BrandDetails" asp-route-Id="@brand.Id" class="btn btn-warning" >Güncelle</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">
+                                    <a asp-controller="productManagement" asp-action="BrandDetails" class="pull-right btn btn-primary">Yeni Marka Ekle</a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-6 -->
+</div>
+
+
+

@@ -18,6 +18,7 @@
                                 <th>#</th>
                                 <th>Kategori Adı</th>
                                 <th>Satışa Hazır mı?</th>
+                                <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,7 +27,11 @@
                                 <tr>
                                     <td>@category.Id</td>
                                     <td>@category.Name</td>
-                                    <td>@(category.IsVisible?"Evet":"Hayır")</td>
+                                    <td style="background-color:@(category.IsVisible ? "green" : "red")">@(category.IsVisible ? "Evet" : "Hayır")</td>
+                                    <td>
+                                        <a style="cursor:pointer" class="btn btn-warning" onclick="UpdateCategoryFiller(@category.Id,'_categoryUpdateModal')">Güncelle</a>
+                                        <a style="cursor:pointer" class="btn btn-danger">Sil</a>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
@@ -63,7 +68,7 @@
             </div>
             <div class="modal-body mx-3">
                 <div class="md-form mb-5">
-                    <label data-error="wrong" data-success="right" for="form34">Category Name</label>
+                    <label data-error="wrong" data-success="right" for="form34">Kategori Adı</label>
                     <input type="text" id="categoryName" class="form-control validate">
                 </div>
                 <div class="md-form mb-5">
@@ -79,11 +84,62 @@
 </div>
 
 
+<div class="modal fade" id="_categoryUpdateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Kategori Güncelle</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert" id="modalMessage">
+
+            </div>
+            <input type="hidden" id="_updateCategoryId" />
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <label data-error="wrong" data-success="right" for="form34">KategoriAdı</label>
+                    <input type="text" id="updateCategoryName" class="form-control validate">
+                </div>
+                <div class="md-form mb-5">
+                    <label data-error="wrong" data-success="right" for="form34">Satışa Hazır mı?</label>
+                    <input type="checkbox" id="updateCategoryIsVisible" class="form-control validate">
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <a class="btn btn-primary btn-unique" style="cursor:pointer" onclick="updateCategory()">Güncelle</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script>
 
+    function UpdateCategoryFiller(categoryId, modalId) {
+        $.ajax({
+            type: "POST",
+            url: "/productManagement/GetCategory",
+            data: { 'categoryId': categoryId },
+            success: function (response) {
+                $("#updateCategoryName").val(response.data.name);
+                $("#updateCategoryIsVisible").attr('checked', response.data.isVisible);
+                $("#_updateCategoryId").val(categoryId);
+            },
+            error: function (response) {
+                $("#modalMessage").show();
+                $("#modalMessage").html(response.responseJSON.message);
+                $("#modalMessage").removeClass("alert-success");
+                $("#modalMessage").addClass("alert-danger");
+            }
+        });
+
+        modalOpener(modalId);
+    }
+
     function modalOpener(modalId) {
-        //$("#categoryName").css("border", "1px solid red");
         $("#" + modalId).modal("show");
         $("#modalMessage").hide();
     }
@@ -96,15 +152,16 @@
             url: "/productManagement/AddCategory",
             data: { 'categoryName': categoryName, 'categoryIsVisible': categoryIsVisible },
             success: function (response) {
+                var color = response.data.isVisible ? 'green' : 'red';
                 $("#modalMessage").show();
                 $("#modalMessage").html(response.message);
                 $("#modalMessage").removeClass("alert-danger");
                 $("#modalMessage").addClass("alert-success");
-                $("#categoryTable").append("<tr><td>" + response.data.id + "</td><td>" + response.data.name + "</td><td>" + (response.data.isVisible?'Evet':'Hayır') + "</td></tr>")
+                $("#categoryTable").append("<tr><td>" + response.data.id + "</td><td>" + response.data.name + "</td><td style='background-color:" + color + "'>" + (response.data.isVisible ? 'Evet' : 'Hayır') + "</td></tr>");
             },
             error: function (response) {
                 var errors = response.responseJSON.errors;
-                $(errors).each(function (i,error) {
+                $(errors).each(function (i, error) {
                     $("#" + error.field).css("border", "1px solid red");
                 })
                 $("#modalMessage").show();
@@ -115,4 +172,37 @@
         });
     }
 
+    function updateCategory() {
+        var categoryName = $("#updateCategoryName").val();
+        var categoryIsVisible = $('#updateCategoryIsVisible').is(':checked');
+        var categoryId = $('#_updateCategoryId').val();
+        $.ajax({
+            type: "POST",
+            url: "/productManagement/UpdateCategory",
+            data: { 'categoryName': categoryName, 'categoryIsVisible': categoryIsVisible, 'categoryId': categoryId},
+            success: function (response) {
+                var rows = $("#categoryTable tr");
+                var color = response.data.isVisible ? 'green' : 'red';
+                $(rows).each(function (i, row) {
+                    if ($(row).find('td:first').html() == categoryId) {
+                        $(row).html("<td>" + response.data.id + "</td><td>" + response.data.name + "</td><td style='background-color:" + color + "'>" + (response.data.isVisible ? 'Evet' : 'Hayır') + "</td>")
+                    }
+                })
+                $("#modalMessage").show();
+                $("#modalMessage").html(response.message);
+                $("#modalMessage").removeClass("alert-danger");
+                $("#modalMessage").addClass("alert-success");
+            },
+            error: function (response) {
+                var errors = response.responseJSON.errors;
+                $(errors).each(function (i, error) {
+                    $("#" + error.field).css("border", "1px solid red");
+                })
+                $("#modalMessage").show();
+                $("#modalMessage").html(response.responseJSON.message);
+                $("#modalMessage").removeClass("alert-success");
+                $("#modalMessage").addClass("alert-danger");
+            }
+        });
+    }
 </script>
