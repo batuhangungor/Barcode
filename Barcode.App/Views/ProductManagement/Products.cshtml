@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Brands";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Ürünlerimiz
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive table-bordered">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Ürün Ara
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <form method="get">
+                                            <div class="col-lg-5">
+                                                <div class="form-group">
+                                                    <label>Ürün Adı :</label>
+                                                    <input class="form-control" name="name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="form-group">
+                                                    <label>Barkodu :</label>
+                                                    <input class="form-control" name="barcode">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="form-group">
+                                                    <label>&nbsp;</label>
+                                                    <button class="btn btn-primary form-control">Ara</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- /.col-lg-6 (nested) -->
+                                    </div>
+                                    <!-- /.row (nested) -->
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <table class="table" id="brandTable">
+                        <thead>
+                            <tr>
+                                <th>Barkodu</th>
+                                <th>Adı</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var product in Model)
+                            {
+                                <tr>
+                                    <td>@product.Barcode</td>
+                                    <td>@product.Name</td>
+                                    <td>
+                                        <a asp-controller="productManagement" asp-action="productDetail" asp-route-Id="@product.Id" class="btn btn-warning">Güncelle</a>
+                                        <a asp-controller="productManagement" asp-action="productDelete" asp-route-Id="@product.Id" class="btn btn-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">
+                                    <a asp-controller="productManagement" asp-action="ProductDetail" class="pull-right btn btn-primary">Yeni Ürün Ekle</a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-6 -->
+</div>
+

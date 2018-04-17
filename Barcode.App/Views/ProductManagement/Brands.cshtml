@@ -28,6 +28,7 @@
                                     <td>@brand.Name</td>
                                     <td>
                                         <a asp-controller="productManagement" asp-action="BrandDetails" asp-route-Id="@brand.Id" class="btn btn-warning" >Güncelle</a>
+                                        <a asp-controller="productManagement" asp-action="branddelete" asp-route-Id="@brand.Id" class="btn btn-danger">Sil</a>
                                     </td>
                                 </tr>
                             }
